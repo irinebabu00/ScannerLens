@@ -82,15 +82,20 @@ function progressUpdate(packet){
 			line.appendChild(progress)
 		}
 
-
 		if(packet.status == 'done'){
 			log.innerHTML = ''
 			var pre = document.createElement('pre')
-			pre.appendChild(document.createTextNode(packet.data.text.replace(/\n\s*\n/g, '\n')))
+			let ocrtext = packet.data.text.replace(/\n\s*\n/g, '\n');
+			pre.appendChild(document.createTextNode(ocrtext))
 			line.innerHTML = ''
 			line.appendChild(pre)
 			$(".fas").removeClass('fa-spinner fa-spin')
 			$(".fas").addClass('fa-check')
+			console.log(text)
+			document.querySelector("#start").addEventListener("click", () => {
+			var msg = new SpeechSynthesisUtterance(text);
+			window.speechSynthesis.speak(msg);
+			});
 		}
 
 		log.insertBefore(line, log.firstChild)
