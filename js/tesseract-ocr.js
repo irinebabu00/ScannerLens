@@ -91,9 +91,9 @@ function progressUpdate(packet){
 			line.appendChild(pre)
 			$(".fas").removeClass('fa-spinner fa-spin')
 			$(".fas").addClass('fa-check')
-			console.log(text)
+			console.log(ocrtext)
 			document.querySelector("#start").addEventListener("click", () => {
-			var msg = new SpeechSynthesisUtterance(text);
+			var msg = new SpeechSynthesisUtterance(ocrtext);
 			window.speechSynthesis.speak(msg);
 			});
 		}
